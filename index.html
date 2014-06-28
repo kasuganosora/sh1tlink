@@ -38,6 +38,40 @@
     </div>
   <script>
   
+  $("#encode-link").click(function(){
+    var val = $("#rawlink").val().trim();
+    var sh1tlink = $("#sh1tlink");
+    sh1tlink.val("");
+    
+    if(val.length > 0) {
+      try{
+        val = sh1tEncode(val);
+      }catch(e){
+        alert(e);
+        return false;
+      }
+      sh1tlink.val(val)
+    }
+    return false;  
+  });
+  
+  
+  $("#decode-link").click(function(){
+    var val = $("#sh1tlink").val().trim();
+    var rawlink = $("#rawlink");
+    rawlink.val("");
+    if(val.length > 0){
+        try{
+          val = sh1tDecode(val);
+        }catch(e){
+            alert(e);
+            return false;
+        }
+        
+        rawlink.val(val);
+    }
+    return false;
+  });
   
   
   //-------------------------
