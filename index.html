@@ -51,7 +51,7 @@ function detranslate(dict,str){
         outChars.push(base64Table[inTableIndex]);
     });
 
-    return atob(unescape(outChars.join('')));
+    return unescape(atob(outChars.join('')));
 }
 
 
