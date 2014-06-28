@@ -143,7 +143,7 @@ function sh1tEncode(str){
             return "孟子曰：" + content;
         case "https":
             content = translate(httpsDict,content);
-            return "金张军说：" + content;
+            return "金将军说：" + content;
         case "ftp":
             content = translate(ftpDict,content);
             return "老子曰：" + content;               
@@ -171,7 +171,7 @@ function sh1tDecode(str){
             return "ed2k://" + detranslate(ed2kDict,content);
         case "孟子曰":
             return "http://" + detranslate(httpDict,content);
-        case "金张军说":
+        case "金将军说":
             return "https://" + detranslate(httpsDict,content);
         case "老子曰":
             return "ftp://" + detranslate(ftpDict,content);
