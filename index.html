@@ -80,7 +80,7 @@ var ed2kDict = ["學", "而", "時", "習", "之", "美", "不", "亦", "說", "
 
 var httpDict = ["人", "之", "患", "無", "在", "好", "為", "師", "夫", "必", "自", "侮", "然", "後", "家", "毀", "而", "國", "伐", "皆", "太", "甲", "則", "曰", "武", "天", "作", "孽", "猶", "可", "違", "不", "活", "君", "此", "謂", "也", "三", "代", "得", "下", "以", "仁", "其", "失", "所", "廢", "興", "存", "亡", "者", "亦", "子", "保", "四", "海", "諸", "侯", "社", "稷", "卿", "大", "宗", "廟","。"];
 var ftpDict = ["天", "下", "皆", "知", "美", "之", "为", "斯", "恶", "已", "善", "不", "故", "有", "无", "相", "生", "难", "易", "成", "长", "短", "形", "高", "倾", "音", "声", "和", "前", "後", "随", "是", "以", "圣", "人", "处", "事", "行", "言", "教", "万", "物", "作", "焉", "而", "辞", "恃", "功", "弗", "居", "夫", "惟", "去", "地", "久", "所", "能", "且", "者", "其", "自", "身", "先", "外","。"];
-
+var httpsDict = ["知", "識", "是", "閃", "耀", "人", "的", "價", "值", "寶", "石", "节", "约", "就", "生", "产", "对", "意", "志", "坚", "强", "来", "说", "没", "有", "不", "可", "能", "事", "如", "果", "什", "么", "那", "朝", "鲜", "语", "社", "会", "主", "义", "民", "向", "和", "因", "此", "必", "胜", "抓", "好", "思", "想", "工", "作", "败", "这", "被", "历", "史", "所", "证", "明", "了", "真","。"];
 var base64Table = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
 
 function translate(dict,str){
@@ -141,6 +141,9 @@ function sh1tEncode(str){
         case "http":
             content = translate(httpDict,content);
             return "孟子曰：" + content;
+        case "https":
+            content = translate(httpsDict,content);
+            return "金张军说：" + content;
         case "ftp":
             content = translate(ftpDict,content);
             return "老子曰：" + content;               
@@ -168,6 +171,8 @@ function sh1tDecode(str){
             return "ed2k://" + detranslate(ed2kDict,content);
         case "孟子曰":
             return "http://" + detranslate(httpDict,content);
+        case "金张军说":
+            return "https://" + detranslate(httpsDict,content);
         case "老子曰":
             return "ftp://" + detranslate(ftDict,content);
         default:
