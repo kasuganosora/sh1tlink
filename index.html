@@ -41,7 +41,7 @@
       }
     
       protocol = tmp[0].toLowerCase();
-      content = btoa(tmp[1]);
+      content = btoa(escape(tmp[1]));
     
       switch(protocol){
           case "magnet":
