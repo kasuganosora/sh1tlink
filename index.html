@@ -123,7 +123,7 @@ function detranslate(dict,str){
 
 function sh1tEncode(str){
     protocol = ""
-    tmp = str.split("://")
+    tmp = str.split(/\:\?|:\/\//);
     if (tmp.length != 2){
         throw new Error("Not a Link");
     }
@@ -163,7 +163,7 @@ function sh1tDecode(str){
     content = tmp[1];
     switch(protocol){
         case "佛曰": 
-            return "magnet://" + detranslate(magnetDict,content);
+            return "magnet:?" + detranslate(magnetDict,content);
         case "子曰":
             return "ed2k://" + detranslate(ed2kDict,content);
         case "孟子曰":
