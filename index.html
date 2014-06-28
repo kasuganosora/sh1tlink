@@ -14,47 +14,95 @@
   </head>
   <body>
   <script>
-    var magnetDict = ["南", "無", "阿", "唎", "耶", "婆", "盧", "羯", "帝", "爍", "缽", "囉", "菩", "提", "薩", "埵", "摩", "訶", "迦", "尼", "唵", "皤", "罰", "曳", "數", "怛", "那", "寫", "悉", "吉", "栗", "伊", "蒙", "室", "佛", "楞", "馱", "謹", "墀", "醯", "哆", "沙", "咩", "他", "豆", "輸", "朋", "逝", "孕", "伽", "特", "姪", "羅", "夷", "度", "闍", "陀", "地", "麼", "穆", "隸", "參", "舍", "利","。"];
-    var ed2kDict = ["學", "而", "時", "習", "之", "美", "不", "亦", "說", "乎", "有", "朋", "自", "遠", "方", "來", "樂", "人", "知", "慍", "君", "子", "其", "為", "也", "孝", "弟", "好", "犯", "上", "者", "鮮", "矣", "作", "亂", "未", "務", "本", "立", "道", "生", "仁", "與", "敬", "父", "母", "尊", "師", "長", "卻", "的", "少", "極", "了", "絕", "對", "沒", "做", "首", "先", "要", "從", "根", "起","。"];
-    
-    
-    function translate(dict,str){
-      base64Table = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
-      outChars = [];
-      str.split("").forEach(function(c, index){
-          inTableIndex = base64Table.indexOf(c);
-          if(inTableIndex == -1){
-              throw "char not in base64Table";
-          }
-          outChars.push(dict[inTableIndex])
-      });
-    
-      return outChars.join('');
+//ed2k://|file|姫川麗%20Rei%20Himekawa%20[1Pondo]%20977%20メイド%20ボイン%20ヘブン.avi|734838640|4143CC7BA0E431181C8EFEBA2D4C7B8D|/
+//magnet:?xt=urn:btih:C7GJPMVSZE5SJZL5SL5A2TFVMO5ON3UE&dn=%5BSumiSora%5D%5BGokukoku%5D%5B12%5D%5BMKV%5D&tr=http%3A%2F%2F208.67.16.113%3A8000%2Fannounce&tr=udp%3A%2F%2F208.67.16.113%3A8000%2Fannounce&tr=http%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.publicbt.com%3A80%2Fannounce&tr=http%3A%2F%2Ftracker.prq.to%2Fannounce&tr=http%3A%2F%2Ftracker.ktxp.com%3A7070%2Fannounce&tr=http%3A%2F%2Ftracker.ktxp.com%3A6868%2Fannounce&tr=http%3A%2F%2Ft2.popgo.org%3A7456%2Fannonce&tr=http%3A%2F%2Fshare.camoe.cn%3A8080%2Fannounce&tr=http%3A%2F%2Ftracker.prq.to%2Fannounce.php&tr=http%3A%2F%2Ftracker.dmhy.org%3A8000%2Fannounce
+
+
+var magnetDict = ["南", "無", "阿", "唎", "耶", "婆", "盧", "羯", "帝", "爍", "缽", "囉", "菩", "提", "薩", "埵", "摩", "訶", "迦", "尼", "唵", "皤", "罰", "曳", "數", "怛", "那", "寫", "悉", "吉", "栗", "伊", "蒙", "室", "佛", "楞", "馱", "謹", "墀", "醯", "哆", "沙", "咩", "他", "豆", "輸", "朋", "逝", "孕", "伽", "特", "姪", "羅", "夷", "度", "闍", "陀", "地", "麼", "穆", "隸", "參", "舍", "利","。"];
+var ed2kDict = ["學", "而", "時", "習", "之", "美", "不", "亦", "說", "乎", "有", "朋", "自", "遠", "方", "來", "樂", "人", "知", "慍", "君", "子", "其", "為", "也", "孝", "弟", "好", "犯", "上", "者", "鮮", "矣", "作", "亂", "未", "務", "本", "立", "道", "生", "仁", "與", "敬", "父", "母", "尊", "師", "長", "卻", "的", "少", "極", "了", "絕", "對", "沒", "做", "首", "先", "要", "從", "根", "起","。"];
+
+var base64Table = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
+
+function translate(dict,str){
+    var outChars = [];
+    str.split("").forEach(function(c, index){
+        inTableIndex = base64Table.indexOf(c);
+        if(inTableIndex == -1){
+            throw "char not in base64Table";
+        }
+        outChars.push(dict[inTableIndex]);
+    });
+
+    return btoa(escape(outChars.join('')));
+}
+
+
+
+
+
+
+
+function detranslate(dict,str){
+    var outChars = [];
+    str.split("").forEach(function(c, index){
+        inTableIndex = dict.indexOf(c);
+        if(inTableIndex == -1){
+            throw "char not in base64Table";
+        }
+        outChars.push(base64Table[inTableIndex]);
+    });
+
+    return atob(unescape(outChars.join('')));
+}
+
+
+
+
+
+
+function sh1tEncode(str){
+    protocol = ""
+    tmp = str.split("://")
+    if (tmp.length != 2){
+        throw new Error("Not a Link");
     }
-    
-    
-    function sh1tEncode(str){
-      protocol = ""
-      tmp = str.split("://")
-      if (tmp.length != 2){
-          throw new Error("Not a Link");
-      }
-    
-      protocol = tmp[0].toLowerCase();
-      content = btoa(escape(tmp[1]));
-    
-      switch(protocol){
-          case "magnet":
-              content = translate(magnetDict,content);
-              return "佛曰：" + content;
-          case "ed2k":
-              content = translate(ed2kDict,content);
-              return "子曰：" + content;
-          default:
-              return "Error!";           
-      }
-    
+
+    protocol = tmp[0].toLowerCase();
+    content = tmp[1];
+
+    switch(protocol){
+        case "magnet":
+            content = translate(magnetDict,content);
+            return "佛曰：" + content;
+        case "ed2k":
+            content = translate(ed2kDict,content);
+            return "子曰：" + content;
+        default:
+            return "Error!";           
     }
+
+}
+
+
+
+function sh1tDecode(str){
+    protocol = ""
+    tmp = str.split("：");
+    if (tmp.length != 2){
+        throw new Error("Not a Link");
+    }
+
+    protocol = tmp[0].toLowerCase();
+    content = tmp[1];
+    switch(protocol){
+        case "佛曰": 
+            return "magnet://" + detranslate(magnetDict,content);
+        case "子曰":
+            return "ed2k://" + detranslate(ed2kDict,content);
+        default:
+            return "Error!"; 
+    }
+}
   </script>
   </body>
 </html>
