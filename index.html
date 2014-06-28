@@ -167,9 +167,9 @@ function sh1tDecode(str){
         case "子曰":
             return "ed2k://" + detranslate(ed2kDict,content);
         case "孟子曰":
-            return "http://" + detranslate(ed2kDict,content);
+            return "http://" + detranslate(httpDict,content);
         case "老子曰":
-            return "ftp://" + detranslate(ed2kDict,content);
+            return "ftp://" + detranslate(ftDict,content);
         default:
             return "Error!"; 
     }
