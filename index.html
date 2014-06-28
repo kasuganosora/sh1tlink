@@ -4,16 +4,41 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <title>文艺下载连接生成器 by kasuganosora</title>
-
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
   </head>
   <body>
+    <div class="container" role="main">
+        <div class="jumbotron">
+            <h1>文艺下载连接生成器</h1>
+            <p>支持http,ftp,磁力,电驴的下载连接</p>
+        </div>
+        
+        <form>
+            <div class="form-group">
+                <label>原始下载连接</label>
+                <input type="text" name="rawlink" id="rawlink">
+            </div>
+            <button id="encode-link">↑生成</button>
+            <button id="decode-link">↓还原</button>
+             <div class="form-group">
+                <label>文艺下载连接</label>
+                <input type="text" name="sh1tlink" id="sh1tlink">
+            </div>           
+        </form>
+      
+    </div>
   <script>
+  
+  
+  
+  //-------------------------
 var magnetDict = ["南", "無", "阿", "唎", "耶", "婆", "盧", "羯", "帝", "爍", "缽", "囉", "菩", "提", "薩", "埵", "摩", "訶", "迦", "尼", "唵", "皤", "罰", "曳", "數", "怛", "那", "寫", "悉", "吉", "栗", "伊", "蒙", "室", "佛", "楞", "馱", "謹", "墀", "醯", "哆", "沙", "咩", "他", "豆", "輸", "朋", "逝", "孕", "伽", "特", "姪", "羅", "夷", "度", "闍", "陀", "地", "麼", "穆", "隸", "參", "舍", "利","。"];
 var ed2kDict = ["學", "而", "時", "習", "之", "美", "不", "亦", "說", "乎", "有", "朋", "自", "遠", "方", "來", "樂", "人", "知", "慍", "君", "子", "其", "為", "也", "孝", "弟", "好", "犯", "上", "者", "鮮", "矣", "作", "亂", "未", "務", "本", "立", "道", "生", "仁", "與", "敬", "父", "母", "尊", "師", "長", "卻", "的", "少", "極", "了", "絕", "對", "沒", "做", "首", "先", "要", "從", "根", "起","。"];
 
